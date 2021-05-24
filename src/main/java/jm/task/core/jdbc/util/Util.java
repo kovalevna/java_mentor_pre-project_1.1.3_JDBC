@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class Util {
+
     private final String URL = "jdbc:mysql://localhost/user";
     private final String USERNAME = "root";
     private final String PASSWORD = "Nikita1211";
