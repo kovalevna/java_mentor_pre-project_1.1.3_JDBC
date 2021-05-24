@@ -8,6 +8,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private final UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
 
+    public UserServiceImpl() {
+        userDaoJDBC.connect();
+    }
+
     public void createUsersTable() {
         userDaoJDBC.createUsersTable();
     }
@@ -30,5 +34,10 @@ public class UserServiceImpl implements UserService {
 
     public void cleanUsersTable() {
         userDaoJDBC.cleanUsersTable();
+    }
+
+    @Override
+    public void finalize() {
+        userDaoJDBC.close();
     }
 }

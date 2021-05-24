@@ -5,35 +5,40 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 public class Util {
-    private static Connection conn = null;
-    private static Statement stmt = null;
+    private final String URL = "jdbc:mysql://localhost/user";
+    private final String USERNAME = "root";
+    private final String PASSWORD = "Nikita1211";
+    private Connection conn = null;
+    private Statement stmt = null;
 
-    public static Connection getConn() {
-        return conn;
+    public String getURL() {
+        return URL;
     }
 
-    public static Statement getStmt() {
+    public String getUSERNAME() {
+        return USERNAME;
+    }
+
+    public String getPASSWORD() {
+        return PASSWORD;
+    }
+
+    public Connection getConn() {
+       return conn;
+    }
+
+    public Statement getStmt() {
         return stmt;
     }
 
-    public static void connect() throws ClassNotFoundException, NoSuchMethodException, SQLException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        String url = "jdbc:mysql://localhost/user";
-        String username = "root";
-        String password = "Nikita1211";
-        Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-        conn = DriverManager.getConnection(url, username, password);
-        System.out.println("Connection to User DB succesfull!");
-        stmt = conn.createStatement();
+    public void setConn(Connection conn) {
+        this.conn = conn;
     }
 
-    public static void close() throws SQLException {
-        if (stmt != null) {
-            stmt.close();
-        }
-        if (conn != null) {
-            conn.close();
-        }
+    public void setStmt(Statement stmt) {
+        this.stmt = stmt;
     }
 }
