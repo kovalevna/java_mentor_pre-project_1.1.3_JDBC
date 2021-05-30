@@ -11,7 +11,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl();
+        UserServiceImpl userService = new UserServiceImpl();
         userService.createUsersTable();
         User first = new User("Ivan", "Ivanov", (byte) 15);
         User second = new User("Petr", "Petrov", (byte) 20);
@@ -31,5 +31,6 @@ public class Main {
         }
         userService.cleanUsersTable();
         userService.dropUsersTable();
+        userService.close();
     }
 }
